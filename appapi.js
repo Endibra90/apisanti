@@ -59,16 +59,17 @@ app.use(bodyParser.json());
 
 // =========  API ===========
 // SELECT ID
-app.get('/', (res) => {
+app.get('/', (req, res) => {
   var sql = 'SELECT Id,Nombre,Apellido,Edad FROM Personas';
-  conn.query(sql,  (err, result) => {
+  conn.query(sql, [parseInt(req.params.id)],  (err, result) => {
     if (err) throw err;
     console.log(result);
     res.send(result)
   });
 })
 app.delete('/borrar', (req, res) => {
-  var sql = 'DELETE FROM Personas WHERE id = ?';
+  console.log('delete ' + req.params.id)
+  var sql = 'DELETE FROM users WHERE id = ?';
   conn.query(sql, [parseInt(req.params.id)],  (err, result) => {
     if (err) throw err;
     console.log(result);
