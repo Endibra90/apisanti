@@ -1,0 +1,15 @@
+﻿FROM node
+WORKDIR /app
+# ====
+ARG CACHEBUST=1
+RUN git clone https://srlopez@dev.azure.com/srlopez/appapi/_git/appapi . && \
+    npm install
+# ====
+ENV MYDBHOST=db
+ENV MYDATABASE=laravel
+ENV MYUSER=root
+ENV MYPASSWORD=
+ENTRYPOINT [ "node", "appapi.js" ]
+# docker-compose necesita saber que puerta está dando servicio
+# a la api
+EXPOSE 7000
