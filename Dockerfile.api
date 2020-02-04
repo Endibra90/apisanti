@@ -2,7 +2,7 @@
 WORKDIR /app
 # ====
 ARG CACHEBUST=1
-RUN git clone https://srlopez@dev.azure.com/srlopez/appapi/_git/appapi . && \
+RUN git clone https://github.com/Endibra90/apisanti.git . && \
     npm install
 # ====
 ENV MYDBHOST=db
