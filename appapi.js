@@ -59,16 +59,24 @@ app.use(bodyParser.json());
 
 // =========  API ===========
 // SELECT ID
-app.get('/', (req, res) => {
+app.get('/', (res) => {
   var sql = 'SELECT Id,Nombre,Apellido,Edad FROM Personas';
-  conn.query(sql, [parseInt(req.params.id)],  (err, result) => {
+  conn.query(sql,  (err, result) => {
     if (err) throw err;
+    console.log(result);
     res.send(result)
   });
 })
-
+app.delete('/borrar', (req, res) => {
+  var sql = 'DELETE FROM Personas WHERE id = ?';
+  conn.query(sql, [parseInt(req.params.id)],  (err, result) => {
+    if (err) throw err;
+    console.log(result);
+    res.send(result)
+  });
+})
 // SELECT ALL
-app.get( apiusers, (req, res) => {
+/*app.get( apiusers, (req, res) => {
   console.log('get all')
   var sql = 'SELECT Id,Nombre,Apellido,Edad FROM users';
   conn.query(sql,  (err, result) => {
@@ -103,15 +111,7 @@ app.put( apiusers, (req, res) => {
 })
 
 // DELETE 
-app.delete( apiusers + '/:id', (req, res) => {
-  console.log('delete ' + req.params.id)
-  var sql = 'DELETE FROM users WHERE id = ?';
-  conn.query(sql, [parseInt(req.params.id)],  (err, result) => {
-    if (err) throw err;
-    console.log(result);
-    res.send(result)
-  });
-})
+
 
 // ======  TODAS LAS DEMAS RUTAS =====
 // 404 Siempre al final
@@ -123,5 +123,5 @@ app.get('*', (req, res) => {
     data: {},
     timestamp: (new Date()).toUTCString()
   })
-})
+})*/
 
