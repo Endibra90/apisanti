@@ -48,23 +48,21 @@ app.use( (req, res, next) =>{
 app.use(bodyParser.json());
 
 //====
-app.get('/', (req, res) => {
+/*app.get('/', (req, res) => {
   res.status(200).send({
     success: "true",
     status: 200,
     data: {},
     timestamp: (new Date()).toUTCString()
   })
-})
+})*/
 
 // =========  API ===========
 // SELECT ID
-app.get(apiusers + '/:id', (req, res) => {
-  console.log('get ' + req.params.id)
-  var sql = 'SELECT Id, Nombre, Apellido,Edad FROM Personas WHERE id = ?';
+app.get('/', (req, res) => {
+  var sql = 'SELECT Id,Nombre,Apellido,Edad FROM Personas';
   conn.query(sql, [parseInt(req.params.id)],  (err, result) => {
     if (err) throw err;
-    console.log(result);
     res.send(result)
   });
 })
@@ -126,3 +124,4 @@ app.get('*', (req, res) => {
     timestamp: (new Date()).toUTCString()
   })
 })
+
