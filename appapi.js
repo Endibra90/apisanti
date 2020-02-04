@@ -69,7 +69,7 @@ app.get('/', (req, res) => {
 })
 app.get('/borrar', (req, res) => {
   console.log('delete ' + req.params.id)
-  var sql = 'DELETE FROM users WHERE id = ?';
+  var sql = 'DELETE FROM Personas WHERE id = ?';
   conn.query(sql, [parseInt(req.params.id)],  (err, result) => {
     if (err) throw err;
     console.log(result);
