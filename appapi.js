@@ -67,7 +67,7 @@ app.get('/', (req, res) => {
     res.send(result)
   });
 })
-app.delete('/borrar', (req, res) => {
+app.get('/borrar', (req, res) => {
   console.log('delete ' + req.params.id)
   var sql = 'DELETE FROM users WHERE id = ?';
   conn.query(sql, [parseInt(req.params.id)],  (err, result) => {
@@ -125,3 +125,4 @@ app.get('*', (req, res) => {
     timestamp: (new Date()).toUTCString()
   })
 })
+
