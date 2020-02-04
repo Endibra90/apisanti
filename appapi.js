@@ -77,7 +77,7 @@ app.delete('/borrar', (req, res) => {
   });
 })
 // SELECT ALL
-/*app.get( apiusers, (req, res) => {
+app.get( apiusers, (req, res) => {
   console.log('get all')
   var sql = 'SELECT Id,Nombre,Apellido,Edad FROM users';
   conn.query(sql,  (err, result) => {
@@ -124,5 +124,4 @@ app.get('*', (req, res) => {
     data: {},
     timestamp: (new Date()).toUTCString()
   })
-})*/
-
+})
